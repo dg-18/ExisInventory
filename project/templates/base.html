@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Inventory Management{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Company Logo">
+        </div>
+        <div class="company-name">ExisInventory</div>
+        <ul>
+            <li><a href="{{ url_for('cashier') }}">Cashier</a></li>
+            <li><a href="{{ url_for('inventory') }}">Inventory</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>{% block header %}Inventory Management System{% endblock %}</h1>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

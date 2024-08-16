@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Cashier Page{% endblock %}
+
+{% block content %}
+<h1>Cashier Page</h1>
+
+{% if error %}
+<div class="error-message">{{ error }}</div>
+{% endif %}
+
+<form method="post">
+    <label for="item_id">Item ID:</label>
+    <input type="number" id="item_id" name="item_id" required>
+    <label for="quantity_sold">Quantity:</label>
+    <input type="number" id="quantity_sold" name="quantity_sold" required>
+    <button type="submit">Submit Sale</button>
+</form>
+
+{% if sold_items %}
+<h2>Items Sold</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Item ID</th>
+            <th>Item Name</th>
+            <th>Quantity Sold</th>
+            <th>Price per Unit</th>
+            <th>Total Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in sold_items %}
+        <tr>
+            <td>{{ item['item_id'] }}</td>
+            <td>{{ item['item_name'] }}</td>
+            <td>{{ item['quantity_sold'] }}</td>
+            <td>${{ item['price'] }}</td>
+            <td>${{ item['total_price'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}
